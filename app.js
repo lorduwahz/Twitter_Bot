@@ -32,6 +32,22 @@ T.get('search/tweets', params, function(err, data, response) {
                     console.log('Favorited: ', `https://twitter.com/${username}/status/${tweetId}`)
                 }
             })
+            
+            })
+            T.post('friendships/create', { screen_name }, function(err, response) {
+                if (err) {
+                    console.log(err);
+                } else {
+                    console.log({ screen_name }, 'has been followed')
+                }
+            })
+            T.post('statuses/retweet', id, function(err, response) {
+                if (err) {
+                    console.log(err)
+                } else {
+                    console.log(id + 'has been retweeted')
+                }
+            })
         }
     } else {
         console.log(err);
